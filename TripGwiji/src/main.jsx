@@ -1,7 +1,8 @@
 import React from 'react'
+import { createBrowserRouter } from 'react-router-dom'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import { createBrowserRouter } from 'react-router-dom'
+import { RouterProvider } from 'react-router-dom'
 import CreateTrip from './create-trip/index.jsx'
 
 const router = createBrowserRouter([
