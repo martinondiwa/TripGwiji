@@ -4,7 +4,9 @@ import { Button } from '../ui/button'
 
 function Hero() {
   return (
-    <div>Create trip</div>
+    <div className='font-extrabold text-[60px]'>
+    <h2>Plan your perfect getaway with our AI-powered trip planner, designed to tailor every detail of your journey to your unique preferences and needs.</h2>
+    </div>
    
   )
 }
