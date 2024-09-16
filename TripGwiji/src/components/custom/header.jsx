@@ -1,11 +1,11 @@
 import React from 'react'
 
-function header() {
+function Header() {
   return (
     <div>
-      
+    <img src='/logo.svg'/>
     </div>
   )
 }
 
-export default header
+export default Header

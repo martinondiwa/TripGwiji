@@ -4,7 +4,7 @@ import { Button } from '../ui/button'
 
 function Hero() {
   return (
-  
+    <div>Create trip</div>
    
   )
 }
