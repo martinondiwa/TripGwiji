@@ -4,11 +4,12 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import { RouterProvider } from 'react-router-dom'
 import CreateTrip from './create-trip/index.jsx'
+import App from './App'
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <div>Hello world!</div>,
+    path: '/App',
+    element: <App/>
   },
   {
     path:'/CreateTrip',
