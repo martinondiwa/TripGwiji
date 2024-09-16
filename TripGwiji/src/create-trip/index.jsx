@@ -2,9 +2,8 @@ import React from 'react'
 
 function CreateTrip() {
   return (
-    <div>
-      
-    </div>
+      <div>Create trip</div>
+    
   )
 }
 
