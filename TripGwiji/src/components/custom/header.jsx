@@ -1,10 +1,11 @@
 import React from 'react';
 import { Button } from '../ui/button';
+import '../../lib/utils';  
 
 function Header() {
   return (
     <>
-      <div className='p-3 shadow-sm flex justify-between items-center px-5'>
+      <div className='p-2 shadow-sm flex justify-between items-center px-5'>
         <img src='/logo.svg' alt='Logo' /> {/* Add alt attribute for accessibility */}
       </div>
 
