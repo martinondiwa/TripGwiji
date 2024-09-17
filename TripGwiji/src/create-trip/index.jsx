@@ -10,6 +10,9 @@ function CreateTrip() {
   const [place, setPlace] = useState();
 
   const [formData,setFormData]=useState([]);
+  const handleInputChange=(name,value) {
+
+  }
   return (
     <div className='sm:px-10 md:px-32 lg:px-56 xl:px-10 px-5 mt-10'>
       <h2 className='font-bold text-3xl'>Tell us your travel preferences 🏕️🌴</h2>
@@ -20,7 +23,7 @@ function CreateTrip() {
           <GooglePlacesAutocomplete apiKey={'import.meta.env.VITE_GOOGLE_PLACE_API_KEY'}
             selectProps={{
               place,
-              onChange: (v) => { setPlace(v); console.log(v) }
+              onChange: (v) => { setPlace(v); handleInputChange('location') }
             }}
           />
         </div>
