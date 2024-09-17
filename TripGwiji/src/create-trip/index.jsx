@@ -3,6 +3,7 @@ import { Expand } from 'lucide-react';
 import React, { useState } from 'react';
 import { SelectBudgetOptions, SelectTravelesList } from '@/constants/options';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
+import { Button } from '@/components/ui/button';
 
 
 function CreateTrip() {
@@ -53,9 +54,9 @@ function CreateTrip() {
           ))}
         </div>
       </div>
+
+      <Button>Generate Trip</Button>
     </div>
-
-
 
   )
 }
