@@ -8,23 +8,35 @@ function CreateTrip() {
   const [place, setPlace] = useState(null);
   const [formData, setFormData] = useState({});
 
+  // Correct function for updating formData
   const handleInputChange = (name, value) => {
-    setFormData({
-      ...formData, // Corrected from 'formField' to 'formData'
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       [name]: value,
-    });
+    }));
   };
 
+  // Log formData for debugging
   useEffect(() => {
     console.log(formData);
   }, [formData]);
 
+  // Trip generation logic with more robust validation
   const OnGenerateTrip = () => {
-    if (formData?.noOfDays > 5) {
+    const { noOfDays, budget, traveler } = formData;
+    
+    if (!noOfDays || !budget || !traveler || !place) {
+      alert("Please complete all fields to generate the trip.");
+      return;
+    }
+    
+    if (noOfDays > 5) {
       alert("We recommend trips shorter than 5 days for a better experience!");
       return;
     }
-    console.log(formData);
+
+    console.log("Trip Details:", formData);
+    alert("Trip generated successfully!");
   };
 
   return (
@@ -33,17 +45,20 @@ function CreateTrip() {
       <p className='mt-4 text-gray-500 text-xl'>
         Help us customize your trip by sharing a few details about your travel style. Whether you prefer adventure, relaxation, or cultural experiences, we’ve got something for you.
       </p>
+
+      {/* Destination Section */}
       <div className='mt-20'>
         <h2 className='text-xl font-medium mb-3'>What is your destination of choice?</h2>
         <GooglePlacesAutocomplete
-          apiKey={import.meta.env.VITE_GOOGLE_PLACE_API_KEY}  // Fixed line
+          apiKey={import.meta.env.VITE_GOOGLE_PLACE_API_KEY}
           selectProps={{
             place,
-            onChange: (v) => { setPlace(v); handleInputChange('location', v) }
+            onChange: (v) => { setPlace(v); handleInputChange('location', v.label); }
           }}
         />
       </div>
 
+      {/* Number of Days Section */}
       <div className='mt-20'>
         <h2 className='font-bold text-3xl'>How many days are you planning your trip?</h2>
         <Input
@@ -54,6 +69,7 @@ function CreateTrip() {
         />
       </div>
 
+      {/* Budget Section */}
       <div className='mt-20'>
         <h2 className='font-bold text-3xl'>What is your budget?</h2>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-5'>
@@ -71,6 +87,7 @@ function CreateTrip() {
         </div>
       </div>
 
+      {/* Traveler Section */}
       <div className='mt-20'>
         <h2 className='font-bold text-3xl'>Who are you planning to travel with?</h2>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-5'>
@@ -88,8 +105,12 @@ function CreateTrip() {
         </div>
       </div>
 
+      {/* Generate Trip Button */}
       <div className='my-10 justify-end flex'>
-        <Button className='bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out' onClick={OnGenerateTrip}>
+        <Button
+          className='bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out'
+          onClick={OnGenerateTrip}
+        >
           Generate Trip
         </Button>
       </div>
