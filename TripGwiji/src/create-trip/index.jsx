@@ -9,16 +9,16 @@ import { Button } from '@/components/ui/button';
 function CreateTrip() {
   const [place, setPlace] = useState();
 
-  const [formData,setFormData]=useState([]);
-  const handleInputChange=(name,value)=>{
-   setFormData({
-    ...formField,
-    [name]:value
-   })
+  const [formData, setFormData] = useState([]);
+  const handleInputChange = (name, value) => {
+    setFormData({
+      ...formField,
+      [name]: value
+    })
   }
-  useEffect(()=>{
-   console.log(formData);
-  },[formData])
+  useEffect(() => {
+    console.log(formData);
+  }, [formData])
   return (
     <div className='sm:px-10 md:px-32 lg:px-56 xl:px-10 px-5 mt-10'>
       <h2 className='font-bold text-3xl'>Tell us your travel preferences 🏕️🌴</h2>
@@ -35,8 +35,8 @@ function CreateTrip() {
         </div>
         <div className='mt-20 flex flex-col gap-10'>
           <h2 className='font-bold text-3xl'>How many Days are you planning your Trip?</h2>
-          <Input placeholder={'Ex.3'} type="number" 
-          onChange={(e)=>handleInputChange('noOfDays',e.target.value)}
+          <Input placeholder={'Ex.3'} type="number"
+            onChange={(e) => handleInputChange('noOfDays', e.target.value)}
           />
         </div>
       </div>
@@ -46,17 +46,17 @@ function CreateTrip() {
         <div className={'grid grid-cols-3 gap-5 mt-5'}>
           {SelectBudgetOptions.map((item, index) => (
             <div key={index}
-            onClick={()=> handleInputChange('budget',item.title)}
-            className= {'p-4 border rounded-lg hover:shadow-lg cursor-pointer
-               ${formData?.budget== item.title&&'shadow-md'}
+              onClick={() => handleInputChange('budget', item.title)}
+              className={'p-4 border rounded-lg hover:shadow-lg cursor-pointer
+               ${formData?.budget == item.title && 'shadow-lg border-black'}
               '}>
-              <h2 className='text-4xl'>{item.icon}</h2>
-              <h2 className='font-bold text-lg'>{item.title}</h2>
-              <h2 className='text-sm text-blue-500'>{item.desc}</h2>
-            </div>
-          ))}
-        </div>
+            < h2 className = 'text-4xl' > { item.icon }</h2>
+        <h2 className='font-bold text-lg'>{item.title}</h2>
+        <h2 className='text-sm text-blue-500'>{item.desc}</h2>
       </div>
+          ))}
+    </div>
+      </div >
 
 
       <div>
@@ -65,7 +65,9 @@ function CreateTrip() {
           {SelectTravelesList.map((item, index) => (
             <div key={index}
             onClick={()=> handleInputChange('traveler',item.people)}
-            className='p-4 border rounded-lg hover:shadow-lg cursor-pointer'>
+            className= {'p-4 border rounded-lg hover:shadow-lg cursor-pointer
+              ${formData?.traveler==item.people&&'shadow-lg border-black'}
+              '}>
               <h2 className='text-4xl'>{item.icon}</h2>
               <h2 className='font-bold text-lg'>{item.title}</h2>
               <h2 className='text-sm text-blue-500'>{item.desc}</h2>
@@ -77,7 +79,7 @@ function CreateTrip() {
       <div className='my-10 justify-end flex'>
       <Button>Generate Trip</Button> 
       </div>
-    </div>
+    </div >
 
   )
 }
