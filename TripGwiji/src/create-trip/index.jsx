@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { SelectBudgetOptions, SelectTravelesList } from '@/constants/options';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import { Button } from '@/components/ui/button';
-import { toast } from '@/hooks/use-toast';
+import { toast } from '@/components/ui/toast';
 
 function CreateTrip() {
   const [place, setPlace] = useState(null);
