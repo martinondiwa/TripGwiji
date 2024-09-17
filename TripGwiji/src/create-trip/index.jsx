@@ -38,6 +38,9 @@ function CreateTrip() {
   .replace('{location}',formData?.location?.label)
   .replace('{totalDays}',formData?.noOfDays)
   .replace('{traveler}',formData?.traveler)
+  .replace('{budget}',formData?.budget)
+
+  console.log(FINAL_PROMPT);
  }
   return (
     <div className='sm:px-10 md:px-32 lg:px-56 xl:px-10 px-5 mt-10'>
