@@ -1,6 +1,6 @@
 import { Input } from '@/components/ui/input';
 import { Expand } from 'lucide-react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SelectBudgetOptions, SelectTravelesList } from '@/constants/options';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
 import { Button } from '@/components/ui/button';
@@ -11,8 +11,14 @@ function CreateTrip() {
 
   const [formData,setFormData]=useState([]);
   const handleInputChange=(name,value)=>{
-   setFormData()
+   setFormData({
+    ...formField,
+    [name]:value
+   })
   }
+  useEffect(()=>{
+
+  },[formData])
   return (
     <div className='sm:px-10 md:px-32 lg:px-56 xl:px-10 px-5 mt-10'>
       <h2 className='font-bold text-3xl'>Tell us your travel preferences 🏕️🌴</h2>
