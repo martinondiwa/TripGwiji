@@ -1,7 +1,7 @@
 import { Input } from '@/components/ui/input';
 import { Expand } from 'lucide-react';
 import React, { useState } from 'react';
-import { SelectBudgetOptions } from '@/constants/options';
+import { SelectBudgetOptions, SelectTravelesList } from '@/constants/options';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
 
 
@@ -44,7 +44,7 @@ function CreateTrip() {
       <div>
         <h2 className='font-bold text-3xl'>Who are you planning to travel with?</h2>
         <div className='grid grid-cols-3 gap-5 mt-5'>
-          {SelectBudgetOptions.map((item, index) => (
+          {SelectTravelesList.map((item, index) => (
             <div key={index} className='p-4 border rounded-lg hover:shadow-lg cursor-pointer'>
               <h2 className='text-4xl'>{item.icon}</h2>
               <h2 className='font-bold text-lg'>{item.title}</h2>
