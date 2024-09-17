@@ -35,4 +35,11 @@ export const SelectTravelesList =[
 
 export const SelectBudgetOptions=[
 
+    {
+        id:1,
+        title:'Cheap',
+        desc: 'Stay conscious of costs',
+        icon:''
+    }
+
 ]
