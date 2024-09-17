@@ -2,7 +2,6 @@ import React from 'react';
 import { Button } from '../ui/button';
 import '../../lib/utils';  
 import Hero from './Hero';
-import { Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -11,9 +10,9 @@ function Header() {
         <img src='/logo.svg' alt='Logo' /> {/* Add alt attribute for accessibility */}
       </div>
 
-      <Link> 
+      <div>
         <Button>Sign in Button</Button>
-        </Link>
+      </div>
     </>
   );
 }
