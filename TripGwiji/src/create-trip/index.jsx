@@ -13,7 +13,8 @@ function CreateTrip() {
           <h2 className='text-xl my-3 font-medium'>What is your destination of choice?</h2>
            <GooglePlacesAutocomplete apiKey={'import.meta.env.VITE_GOOGLE_PLACE_API_KEY'}
            selectProps={{
-
+            place,
+            onChange:(v)=>{setPlace(v)}
            }}
            />
         </div>
