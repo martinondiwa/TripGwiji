@@ -14,7 +14,7 @@ function CreateTrip() {
            <GooglePlacesAutocomplete apiKey={'import.meta.env.VITE_GOOGLE_PLACE_API_KEY'}
            selectProps={{
             place,
-            onChange:(v)=>{setPlace(v)}
+            onChange:(v)=>{setPlace(v);console.log(v)}
            }}
            />
         </div>
