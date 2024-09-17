@@ -65,11 +65,10 @@ function CreateTrip() {
           onChange={(e) => handleInputChange('noOfDays', e.target.value)}
         />
       </div>
-
       <div className='mt-20'>
         <h2 className='font-bold text-3xl'>What is your budget?</h2>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-5'>
-          {SelectBudgetOptions.map((item, index) => (
+         {SelectBudgetOptions.map((item, index) => (
             <div key={index}
               onClick={() => handleInputChange('budget', item.title)}
               className={`p-4 border rounded-lg hover:shadow-2xl transition-transform transform hover:scale-105 cursor-pointer ${formData?.budget === item.title ? 'shadow-lg border-black' : ''}`}>
@@ -78,7 +77,7 @@ function CreateTrip() {
               <h2 className='text-sm text-blue-500'>{item.desc}</h2>
             </div>
           ))
-          }
+              }
         </div>
       </div>
 
