@@ -8,6 +8,7 @@ import App from './App'
 import Header from './components/custom/Header'
 import ErrorPage from './components/custom/ErrorPage'
 import Contact from './components/custom/Contact'
+import { Toaster } from './components/ui/toaster'
 const router = createBrowserRouter([
   {
     path: '/App',
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
   <Header/>
+  <Toaster/>
   <RouterProvider router={router} />
 </React.StrictMode>
 )
