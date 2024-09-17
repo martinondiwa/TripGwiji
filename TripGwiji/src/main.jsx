@@ -7,6 +7,7 @@ import CreateTrip from './create-trip/index.jsx'
 import App from './App'
 import Header from './components/custom/Header'
 import ErrorPage from './components/custom/ErrorPage'
+import Contact from './components/custom/Contact'
 const router = createBrowserRouter([
   {
     path: '/App',
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path:'/CreateTrip',
     element: <CreateTrip/>
+  },
+  {
+    path:'/Contact',
+    element:<Contact/>
   }
 ]);
 createRoot(document.getElementById('root')).render(
