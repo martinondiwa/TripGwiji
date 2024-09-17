@@ -1,8 +1,3 @@
-/*
- * Install the Generative AI SDK
- *
- * $ npm install @google/generative-ai
- */
 
 const {
     GoogleGenerativeAI,
@@ -27,8 +22,7 @@ const {
   
    export const chatSession = model.startChat({
       generationConfig,
-   // safetySettings: Adjust safety settings
-   // See https://ai.google.dev/gemini-api/docs/safety-settings
+
       history: [
         {
           role: "user",
@@ -45,8 +39,4 @@ const {
       ],
     });
   
-    const result = await chatSession.sendMessage("INSERT_INPUT_HERE");
-    console.log(result.response.text());
-  }
   
-  run();

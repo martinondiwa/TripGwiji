@@ -54,3 +54,5 @@ export const SelectBudgetOptions = [
     }
 
 ];
+
+export const AI_PROMT='Generate Travel plan for Location : {location}, for {totalDays} Days for (travel)'
