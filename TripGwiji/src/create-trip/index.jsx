@@ -4,6 +4,7 @@ import { AI_PROMT, SelectBudgetOptions, SelectTravelesList } from '@/constants/o
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import { Button } from '@/components/ui/button';
 import { Toast } from '@/components/ui/toast';
+import { chatSession } from '@/service/AIModal';
 
 
 function CreateTrip() {
@@ -21,20 +22,21 @@ function CreateTrip() {
     console.log(formData);
   }, [formData]);
 
-  
- const OnGenerateTrip=()=>{
-  if (formData?.noOfDays > 5 && !formData?.location || !formData?.budget || !formData?.people) {
-    Toast.show("Please fill all details"); // Adjust this based on your Toast library's API
-    return;
-  }
-  const FINAL_PROMPT=AI_PROMT
-  .replace('{location}',formData?.location?.label)
-  .replace('{totalDays}',formData?.noOfDays)
-  .replace('{traveler}',formData?.traveler)
-  .replace('{budget}',formData?.budget)
 
-  console.log(FINAL_PROMPT);
- }
+  const OnGenerateTrip =async() => {
+    if (formData?.noOfDays > 5 && !formData?.location || !formData?.budget || !formData?.people) {
+      Toast.show("Please fill all details"); // Adjust this based on your Toast library's API
+      return;
+    }
+    const FINAL_PROMPT = AI_PROMT
+      .replace('{location}', formData?.location?.label)
+      .replace('{totalDays}', formData?.noOfDays)
+      .replace('{traveler}', formData?.traveler)
+      .replace('{budget}', formData?.budget)
+
+    console.log(FINAL_PROMPT);
+    const result=await chatSession.sendMessage(FINAL_PROMPT);
+  }
   return (
     <div className='sm:px-10 md:px-32 lg:px-56 xl:px-10 px-5 mt-10'>
       <h2 className='font-bold text-3xl'>Tell us your travel preferences 🏕️🌴</h2>
@@ -68,9 +70,7 @@ function CreateTrip() {
           {SelectBudgetOptions.map((item, index) => (
             <div key={index}
               onClick={() => handleInputChange('budget', item.title)}
-              className={`p-4 border rounded-lg hover:shadow-2xl transition-transform transform hover:scale-105 cursor-pointer ${
-                formData?.budget === item.title ? 'shadow-lg border-black' : ''
-              }`}>
+              className={`p-4 border rounded-lg hover:shadow-2xl transition-transform transform hover:scale-105 cursor-pointer ${formData?.budget === item.title ? 'shadow-lg border-black' : ''}`}>
               <h2 className='text-4xl'>{item.icon}</h2>
               <h2 className='font-bold text-lg'>{item.title}</h2>
               <h2 className='text-sm text-blue-500'>{item.desc}</h2>
@@ -78,17 +78,13 @@ function CreateTrip() {
           ))
           }
         </div>
-       </div>
+      </div>
 
-       <div className='mt-20'>
+      <div className='mt-20'>
         <h2 className='font-bold text-3xl'>Who are you planning to travel with?</h2>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-5'>
           {SelectTravelesList.map((item, index) => (
-            <div key={index}
-              onClick={() => handleInputChange('traveler', item.people)}
-              className={`p-4 border rounded-lg hover:shadow-2xl transition-transform transform hover:scale-105 cursor-pointer ${
-                formData?.traveler === item.people ? 'shadow-lg border-black' : ''
-              }`}>
+            <div key={index} onClick={() => handleInputChange('traveler', item.people)} className={`p-4 border rounded-lg hover:shadow-2xl transition-transform transform hover:scale-105 cursor-pointer ${formData?.traveler === item.people ? 'shadow-lg border-black' : ''}`}>
               <h2 className='text-4xl'>{item.icon}</h2>
               <h2 className='font-bold text-lg'>{item.title}</h2>
               <h2 className='text-sm text-blue-500'>{item.desc}</h2>
