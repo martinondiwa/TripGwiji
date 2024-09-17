@@ -31,7 +31,7 @@ function CreateTrip() {
         <div className='grid grid-cols-3 gap-5 mt-5'>
           {SelectBudgetOptions.map((item, index) => (
             <div key={index} className='p-4 border rounded-lg hover:shadow-lg'>
-            <h2>{item.icon}</h2>
+            <h2 className='text-3xl'>{item.icon}</h2>
             <h2>{item.title}</h2>
             <h2>{item.desc}</h2>
             </div>
