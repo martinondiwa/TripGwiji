@@ -35,7 +35,7 @@ function CreateTrip() {
     return;
   }
   const FINAL_PROMPT=AI_PROMT
-  .replace()
+  .replace('location',formData?.location?.label)
  }
   return (
     <div className='sm:px-10 md:px-32 lg:px-56 xl:px-10 px-5 mt-10'>
