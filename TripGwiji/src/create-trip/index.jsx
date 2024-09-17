@@ -10,7 +10,7 @@ function CreateTrip() {
       <div>
         <div className='mt-20'>
           <h2 className='text-xl my-3 font-medium'>What is your destination of choice?</h2>
-           <GooglePlacesAutocomplete/>
+           <GooglePlacesAutocomplete apiKey=''/>
         </div>
       </div>
 
