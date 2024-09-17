@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { SelectBudgetOptions, SelectTravelesList } from '@/constants/options';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import { Button } from '@/components/ui/button';
+import { toast } from '@/hooks/use-toast';
 
 function CreateTrip() {
   const [place, setPlace] = useState(null);
@@ -26,17 +27,17 @@ function CreateTrip() {
     const { noOfDays, budget, traveler } = formData;
     
     if (!noOfDays || !budget || !traveler || !place) {
-      alert("Please complete all fields to generate the trip.");
+      toast("Please complete all fields to generate the trip.");
       return;
     }
     
     if (noOfDays > 5) {
-      alert("We recommend trips shorter than 5 days for a better experience!");
+      toast("We recommend trips shorter than 5 days for a better experience!");
       return;
     }
 
     console.log("Trip Details:", formData);
-    alert("Trip generated successfully!");
+    toast("Trip generated successfully!");
   };
 
   return (
