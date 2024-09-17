@@ -17,7 +17,7 @@ function CreateTrip() {
    })
   }
   useEffect(()=>{
-   console.log(formData)
+   console.log(formData);
   },[formData])
   return (
     <div className='sm:px-10 md:px-32 lg:px-56 xl:px-10 px-5 mt-10'>
@@ -35,7 +35,9 @@ function CreateTrip() {
         </div>
         <div className='mt-20 flex flex-col gap-10'>
           <h2 className='font-bold text-3xl'>How many Days are you planning your Trip?</h2>
-          <Input placeholder={'Ex.3'} type="number" />
+          <Input placeholder={'Ex.3'} type="number" 
+          onChange={(e)=>handleInputChange('noOfDays',e.target.value)}
+          />
         </div>
       </div>
 
