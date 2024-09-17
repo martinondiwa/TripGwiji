@@ -1,3 +1,5 @@
+import { Input } from '@/components/ui/input';
+import { Expand } from 'lucide-react';
 import React, { useState } from 'react'
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
 
@@ -20,6 +22,7 @@ function CreateTrip() {
         </div>
         <div className='mt-20'>
           <h2 className='font-bold text-3xl'>How many Days are going to spend for your journey?</h2>
+          <Input placeholder={'Ex.3'} type="number"/>
         </div>
       </div>
 
