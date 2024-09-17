@@ -33,6 +33,7 @@ function CreateTrip() {
             <div key={index}>
             <h2>{item.icon}</h2>
             <h2>{item.title}</h2>
+            <h2>{item.desc}</h2>
             </div>
           ))}
         </div>
