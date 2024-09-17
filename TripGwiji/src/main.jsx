@@ -9,7 +9,8 @@ import Header from './components/custom/Header'
 const router = createBrowserRouter([
   {
     path: '/App',
-    element: <App/>
+    element: <App/>,
+    errorElement: <div>Not Found</div>
   },
   {
     path:'/CreateTrip',
