@@ -21,17 +21,10 @@ function CreateTrip() {
     console.log(formData);
   }, [formData]);
 
-  const OnGenerateTrip = () => {
-    if (formData?.noOfDays > 5) {
-      alert("We recommend trips shorter than 5 days for a better experience!");
-      return;
-    }
-    console.log(formData);
-  };
+  
  const OnGenerateTrip=()=>{
-  if(formData?.noOfDays>5&&!formData?.location|| !formData?.budget|| !formData?.people)
-  {
-    Toast {"please fill all details"}
+  if (formData?.noOfDays > 5 && !formData?.location || !formData?.budget || !formData?.people) {
+    Toast.show("Please fill all details"); // Adjust this based on your Toast library's API
     return;
   }
   const FINAL_PROMPT=AI_PROMT
