@@ -1,11 +1,3 @@
-import React from 'react'
-
-function ErrorPage() {
-  return (
-    <div>
-      The page You are trying is not there
-    </div>
-  )
+export default function ErrorPage(){
+    return <div>The page you are trying is not available</div>;
 }
-
-export default ErrorPage

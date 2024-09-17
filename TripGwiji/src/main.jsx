@@ -6,11 +6,12 @@ import { RouterProvider } from 'react-router-dom'
 import CreateTrip from './create-trip/index.jsx'
 import App from './App'
 import Header from './components/custom/Header'
+import ErrorPage from './components/custom/ErrorPage'
 const router = createBrowserRouter([
   {
     path: '/App',
     element: <App/>,
-    errorElement: <div>Not Found</div>
+    errorElement: <ErrorPage/>
   },
   {
     path:'/CreateTrip',
