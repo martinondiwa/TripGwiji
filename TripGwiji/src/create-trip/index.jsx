@@ -32,6 +32,7 @@ function CreateTrip() {
           {SelectBudgetOptions.map((item, index) => (
             <div key={index}>
             <h2>{item.icon}</h2>
+            <h2>{item.title}</h2>
             </div>
           ))}
         </div>
