@@ -8,6 +8,8 @@ export const SelectTravelesList =[
         
     },
     {
-        
+      id:2,
+      title:'Couple',
+      desc:'Two travelers in tandem',
     }
 ]
