@@ -55,7 +55,9 @@ function CreateTrip() {
         </div>
       </div>
 
-      <Button>Generate Trip</Button>
+      <div>
+      <Button>Generate Trip</Button> 
+      </div>
     </div>
 
   )
