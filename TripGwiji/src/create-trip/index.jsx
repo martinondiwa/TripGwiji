@@ -21,7 +21,7 @@ function CreateTrip() {
           />
         </div>
         <div className='mt-20 flex flex-col gap-10'>
-          <h2 className='font-bold text-3xl'>How many Days are going to spend for your journey?</h2>
+          <h2 className='font-bold text-3xl'>How many Days are you planning your Trip?</h2>
           <Input placeholder={'Ex.3'} type="number"/>
         </div>
       </div>
