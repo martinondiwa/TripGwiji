@@ -22,13 +22,17 @@ function CreateTrip() {
         </div>
         <div className='mt-20 flex flex-col gap-10'>
           <h2 className='font-bold text-3xl'>How many Days are you planning your Trip?</h2>
-          <Input placeholder={'Ex.3'} type="number"/>
+          <Input placeholder={'Ex.3'} type="number" />
         </div>
       </div>
-     <div>
-     <h2 className='font-bold text-3xl'>What is you Budget?</h2>
-
-     </div>
+      <div>
+        <h2 className='font-bold text-3xl'>What is you Budget?</h2>
+        <div>
+           {SelectBudgetOptions.map((item,index)=>(
+            <div>
+           ))}
+        </div>
+      </div>
     </div>
 
 
