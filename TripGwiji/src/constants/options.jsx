@@ -13,9 +13,10 @@ export const SelectTravelesList =[
       id:2,
       title:'Couple',
       desc:'Two travelers in tandem',
-      icon: <Icon name="glass" size={24} color={"#000"} />
+      icon: <Icon name="glass" size={24} color={"#000"} />,
+      people:'2 people'
     },
     {
-        
+      
     }
 ]
