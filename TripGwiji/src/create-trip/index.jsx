@@ -28,9 +28,9 @@ function CreateTrip() {
       </div>
       <div>
         <h2 className='font-bold text-3xl'>What is you Budget?</h2>
-        <div>
+        <div className=''>
           {SelectBudgetOptions.map((item, index) => (
-            <div key={index}>
+            <div key={index} className='p-4 border rounded-lg hover:shadow-lg'>
             <h2>{item.icon}</h2>
             <h2>{item.title}</h2>
             <h2>{item.desc}</h2>
