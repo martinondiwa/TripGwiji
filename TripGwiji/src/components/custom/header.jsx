@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button } from '../ui/button';
 import '../../lib/utils';  
-import Hero from './Hero';
 
 function Header() {
   return (
