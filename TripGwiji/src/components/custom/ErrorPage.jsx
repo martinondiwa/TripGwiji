@@ -4,8 +4,9 @@ export default function ErrorPage() {
     const error = useRouteError();
     console.log(error);
     return (
-        <div> 
-    <P>The page you are trying is not available</P>
-    </div>
+        <div>
+            <p>The page you are trying is not available</p>
+            <p> {error.statusText || error.message}</p>
+        </div>
     );
 }
