@@ -1,0 +1,53 @@
+/*
+ * Install the Generative AI SDK
+ *
+ * $ npm install @google/generative-ai
+ */
+
+const {
+    GoogleGenerativeAI,
+    HarmCategory,
+    HarmBlockThreshold,
+  } = require("@google/generative-ai");
+  
+  const apiKey = process.env.GEMINI_API_KEY;
+  const genAI = new GoogleGenerativeAI(apiKey);
+  
+  const model = genAI.getGenerativeModel({
+    model: "gemini-1.5-flash",
+  });
+  
+  const generationConfig = {
+    temperature: 1,
+    topP: 0.95,
+    topK: 64,
+    maxOutputTokens: 8192,
+    responseMimeType: "text/plain",
+  };
+  
+  async function run() {
+    const chatSession = model.startChat({
+      generationConfig,
+   // safetySettings: Adjust safety settings
+   // See https://ai.google.dev/gemini-api/docs/safety-settings
+      history: [
+        {
+          role: "user",
+          parts: [
+            {text: "Generate Travel Plan for Location: las vegas, for 3 days for Couple with a cheap budget, Give me a Hotels options list with HotelName, Hotel address, Price, hotel image url, geo coordinates, rating, descriptions and suggest itinerary with placeName, place Details, place Image url, Geo Coordinates, ticket Pricing, rating,  time to travel each of the location for 3 days with each day plan with best time to visit in JSON format."},
+          ],
+        },
+        {
+          role: "model",
+          parts: [
+            {text: "```json\n{\n  \"hotel_options\": [\n    {\n      \"name\": \"The D Las Vegas\",\n      \"address\": \"301 Fremont Street, Las Vegas, NV 89101\",\n      \"price\": \"$50-$100 per night\",\n      \"image_url\": \"https://www.the-d.com/media/images/hotel/exterior-day.jpg\",\n      \"geo_coordinates\": [36.1683, -115.1437],\n      \"rating\": 4.0,\n      \"description\": \"A budget-friendly hotel located in the heart of Fremont Street Experience, offering free Wi-Fi, a rooftop pool, and a casino.\"\n    },\n    {\n      \"name\": \"Circus Circus Hotel & Casino\",\n      \"address\": \"2880 Las Vegas Blvd S, Las Vegas, NV 89109\",\n      \"price\": \"$40-$80 per night\",\n      \"image_url\": \"https://www.circuscircus.com/media/images/hotel/exterior.jpg\",\n      \"geo_coordinates\": [36.1186, -115.1736],\n      \"rating\": 3.5,\n      \"description\": \"A family-friendly hotel with a circus theme, offering affordable rooms, a large casino, and a variety of entertainment options.\"\n    },\n    {\n      \"name\": \"Golden Nugget Hotel & Casino\",\n      \"address\": \"129 E Fremont St, Las Vegas, NV 89101\",\n      \"price\": \"$70-$150 per night\",\n      \"image_url\": \"https://www.goldennugget.com/media/images/hotel/exterior-day.jpg\",\n      \"geo_coordinates\": [36.1689, -115.1402],\n      \"rating\": 4.5,\n      \"description\": \"A luxurious hotel with a historic charm, offering a variety of amenities, including a world-class casino, a shark tank, and a pool complex.\"\n    }\n  ],\n  \"itinerary\": [\n    {\n      \"day\": \"Day 1\",\n      \"plan\": [\n        {\n          \"time\": \"9:00 AM - 11:00 AM\",\n          \"placeName\": \"Fremont Street Experience\",\n          \"placeDetails\": \"A pedestrian-friendly area with live music, street performers, and dazzling light shows.\",\n          \"placeImageURL\": \"https://www.visitlasvegas.com/media/images/attractions/fremont-street-experience.jpg\",\n          \"geoCoordinates\": [36.1683, -115.1437],\n          \"ticketPricing\": \"Free\",\n          \"rating\": 4.5,\n          \"timeToTravel\": \"2 hours\"\n        },\n        {\n          \"time\": \"11:00 AM - 1:00 PM\",\n          \"placeName\": \"The Neon Museum\",\n          \"placeDetails\": \"A museum dedicated to the iconic neon signs of Las Vegas, offering a glimpse into the city's history.\",\n          \"placeImageURL\": \"https://www.visitlasvegas.com/media/images/attractions/neon-museum.jpg\",\n          \"geoCoordinates\": [36.1648, -115.1408],\n          \"ticketPricing\": \"$20\",\n          \"rating\": 4.0,\n          \"timeToTravel\": \"2 hours\"\n        },\n        {\n          \"time\": \"1:00 PM - 3:00 PM\",\n          \"placeName\": \"Heart Attack Grill\",\n          \"placeDetails\": \"A unique and quirky restaurant known for its unhealthy but delicious food.\",\n          \"placeImageURL\": \"https://www.tripadvisor.com/Tourism-g45963-Attractions-Heart_Attack_Grill-Las_Vegas-Vacations.html\",\n          \"geoCoordinates\": [36.1683, -115.1437],\n          \"ticketPricing\": \"N/A\",\n          \"rating\": 4.0,\n          \"timeToTravel\": \"2 hours\"\n        },\n        {\n          \"time\": \"3:00 PM - 5:00 PM\",\n          \"placeName\": \"Downtown Container Park\",\n          \"placeDetails\": \"An outdoor shopping and entertainment complex made from shipping containers.\",\n          \"placeImageURL\": \"https://www.visitlasvegas.com/media/images/attractions/downtown-container-park.jpg\",\n          \"geoCoordinates\": [36.1683, -115.1437],\n          \"ticketPricing\": \"Free\",\n          \"rating\": 4.0,\n          \"timeToTravel\": \"2 hours\"\n        },\n        {\n          \"time\": \"5:00 PM - 7:00 PM\",\n          \"placeName\": \"Free Show at The LINQ Promenade\",\n          \"placeDetails\": \"Enjoy a free outdoor show at The LINQ Promenade.\",\n          \"placeImageURL\": \"https://www.visitlasvegas.com/media/images/attractions/the-linq-promenade.jpg\",\n          \"geoCoordinates\": [36.1186, -115.1736],\n          \"ticketPricing\": \"Free\",\n          \"rating\": 4.0,\n          \"timeToTravel\": \"2 hours\"\n        }\n      ]\n    },\n    {\n      \"day\": \"Day 2\",\n      \"plan\": [\n        {\n          \"time\": \"9:00 AM - 12:00 PM\",\n          \"placeName\": \"Hoover Dam\",\n          \"placeDetails\": \"A historic dam and a popular tourist destination, offering tours and breathtaking views.\",\n          \"placeImageURL\": \"https://www.visitlasvegas.com/media/images/attractions/hoover-dam.jpg\",\n          \"geoCoordinates\": [36.0087, -114.9960],\n          \"ticketPricing\": \"$30\",\n          \"rating\": 4.5,\n          \"timeToTravel\": \"3 hours\"\n        },\n        {\n          \"time\": \"12:00 PM - 2:00 PM\",\n          \"placeName\": \"Red Rock Canyon National Conservation Area\",\n          \"placeDetails\": \"A scenic canyon with hiking trails, rock formations, and panoramic views.\",\n          \"placeImageURL\": \"https://www.visitlasvegas.com/media/images/attractions/red-rock-canyon-national-conservation-area.jpg\",\n          \"geoCoordinates\": [36.0535, -115.2655],\n          \"ticketPricing\": \"$15\",\n          \"rating\": 4.5,\n          \"timeToTravel\": \"2 hours\"\n        },\n        {\n          \"time\": \"2:00 PM - 4:00 PM\",\n          \"placeName\": \"Bellagio Conservatory & Botanical Garden\",\n          \"placeDetails\": \"A stunning indoor garden with beautiful flowers, sculptures, and seasonal displays.\",\n          \"placeImageURL\": \"https://www.visitlasvegas.com/media/images/attractions/bellagio-conservatory-botanical-garden.jpg\",\n          \"geoCoordinates\": [36.1152, -115.1724],\n          \"ticketPricing\": \"Free\",\n          \"rating\": 4.5,\n          \"timeToTravel\": \"2 hours\"\n        },\n        {\n          \"time\": \"4:00 PM - 6:00 PM\",\n          \"placeName\": \"The Venetian & The Palazzo\",\n          \"placeDetails\": \"Luxurious hotels with a Venetian theme, offering shopping, dining, and entertainment.\",\n          \"placeImageURL\": \"https://www.visitlasvegas.com/media/images/attractions/the-venetian-the-palazzo.jpg\",\n          \"geoCoordinates\": [36.1161, -115.1733],\n          \"ticketPricing\": \"Free\",\n          \"rating\": 4.5,\n          \"timeToTravel\": \"2 hours\"\n        }\n      ]\n    },\n    {\n      \"day\": \"Day 3\",\n      \"plan\": [\n        {\n          \"time\": \"9:00 AM - 11:00 AM\",\n          \"placeName\": \"High Roller Observation Wheel\",\n          \"placeDetails\": \"A giant observation wheel offering panoramic views of the Las Vegas Strip.\",\n          \"placeImageURL\": \"https://www.visitlasvegas.com/media/images/attractions/high-roller-observation-wheel.jpg\",\n          \"geoCoordinates\": [36.1167, -115.1729],\n          \"ticketPricing\": \"$30\",\n          \"rating\": 4.5,\n          \"timeToTravel\": \"2 hours\"\n        },\n        {\n          \"time\": \"11:00 AM - 1:00 PM\",\n          \"placeName\": \"The LINQ Promenade\",\n          \"placeDetails\": \"A pedestrian-friendly street with shops, restaurants, and entertainment.\",\n          \"placeImageURL\": \"https://www.visitlasvegas.com/media/images/attractions/the-linq-promenade.jpg\",\n          \"geoCoordinates\": [36.1186, -115.1736],\n          \"ticketPricing\": \"Free\",\n          \"rating\": 4.0,\n          \"timeToTravel\": \"2 hours\"\n        },\n        {\n          \"time\": \"1:00 PM - 3:00 PM\",\n          \"placeName\": \"The Forum Shops at Caesars\",\n          \"placeDetails\": \"A luxury shopping mall with high-end boutiques and designer stores.\",\n          \"placeImageURL\": \"https://www.visitlasvegas.com/media/images/attractions/the-forum-shops-at-caesars.jpg\",\n          \"geoCoordinates\": [36.1171, -115.1718],\n          \"ticketPricing\": \"Free\",\n          \"rating\": 4.0,\n          \"timeToTravel\": \"2 hours\"\n        },\n        {\n          \"time\": \"3:00 PM - 5:00 PM\",\n          \"placeName\": \"Bellagio Fountains\",\n          \"placeDetails\": \"A spectacular water and light show that takes place in front of the Bellagio Hotel.\",\n          \"placeImageURL\": \"https://www.visitlasvegas.com/media/images/attractions/bellagio-fountains.jpg\",\n          \"geoCoordinates\": [36.1152, -115.1724],\n          \"ticketPricing\": \"Free\",\n          \"rating\": 4.5,\n          \"timeToTravel\": \"2 hours\"\n        }\n      ]\n    }\n  ]\n}\n```\n\n**Notes:**\n\n* This is just a sample itinerary and can be customized based on your interests and preferences.\n* Hotel prices may vary depending on the season and availability.\n* You can find cheaper food options by avoiding the more expensive restaurants on the Strip and exploring the local eateries.\n* Consider using public transportation or walking to save on transportation costs.\n* Take advantage of free activities such as the Bellagio Fountains, the Fremont Street Experience, and the outdoor shows at The LINQ Promenade.\n* Check for discounts and promotions on attractions and activities to save money.\n"},
+          ],
+        },
+      ],
+    });
+  
+    const result = await chatSession.sendMessage("INSERT_INPUT_HERE");
+    console.log(result.response.text());
+  }
+  
+  run();
