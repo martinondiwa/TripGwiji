@@ -22,7 +22,12 @@ const router = createBrowserRouter([
   {
     path:'/Contact',
     element:<Contact/>
+  },
+  {
+    path:'/Header',
+    element:<Header/>
   }
+
 ]);
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
