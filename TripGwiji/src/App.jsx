@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css';
 import { Button } from './components/ui/button';
 import Hero from './components/custom/Hero';
+import { Link } from 'react-router-dom';
 
 
 function App() {
