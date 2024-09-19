@@ -116,13 +116,14 @@ function CreateTrip() {
         </Button>
       </div>
       <Dialog>
-        <DialogTrigger>Open</DialogTrigger>
+        <DialogTrigger>Sign in</DialogTrigger>
         <DialogContent>
           <DialogHeader>
             
             <DialogDescription>
               <img src="/logo.svg"/>
               <h2>Sign in with google</h2>
+              <p>Sign in to the app with google Authentication</p>
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
