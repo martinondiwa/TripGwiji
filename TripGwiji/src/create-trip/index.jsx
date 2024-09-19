@@ -24,6 +24,9 @@ function CreateTrip() {
 
 
   const OnGenerateTrip =async() => {
+
+    localStorage.getItem('User');
+
     if (formData?.noOfDays > 5 && !formData?.location || !formData?.budget || !formData?.people) {
       Toast.show("Please fill all details"); // Adjust this based on your Toast library's API
       return;
