@@ -9,30 +9,33 @@ import Header from './components/custom/Header'
 import ErrorPage from './components/custom/ErrorPage'
 import Contact from './components/custom/Contact'
 import { Toaster } from './components/ui/toaster'
+import { GoogleOAuthProvider } from '@react-oauth/google'
 const router = createBrowserRouter([
   {
     path: '/App',
-    element: <App/>,
-    errorElement: <ErrorPage/>
+    element: <App />,
+    errorElement: <ErrorPage />
   },
   {
-    path:'/CreateTrip',
-    element: <CreateTrip/>
+    path: '/CreateTrip',
+    element: <CreateTrip />
   },
   {
-    path:'/Contact',
-    element:<Contact/>
+    path: '/Contact',
+    element: <Contact />
   },
   {
-    path:'/Header',
-    element:<Header/>
+    path: '/Header',
+    element: <Header />
   }
 
 ]);
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-  <Header/>
-  <Toaster/>
-  <RouterProvider router={router} />
-</React.StrictMode>
+    <GoogleOAuthProvider clientId={import}>
+      <Header />
+      <Toaster />
+      <RouterProvider router={router} />
+    </GoogleOAuthProvider>
+  </React.StrictMode>
 )
