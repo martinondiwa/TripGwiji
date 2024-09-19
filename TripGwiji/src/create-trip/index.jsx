@@ -66,7 +66,8 @@ function CreateTrip() {
         
     axios.get('https://www.googleapis.com/oauth2/v1/userinfo?access_token=${tokenInfo?.acess_token}',{
       headers: {
-        Authorization:'Bearer ${tokenInfo?.access_token}'
+        Authorization:'Bearer ${tokenInfo?.access_token}',
+        Accept: 'Application/json'
       }
     })
   }
