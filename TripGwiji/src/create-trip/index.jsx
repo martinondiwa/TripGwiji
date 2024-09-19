@@ -10,7 +10,6 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { FcGoogle } from "react-icons/fc";
@@ -18,8 +17,8 @@ import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 
 function CreateTrip() {
-  const [place, setPlace] = useState();
-  const [formData, setFormData] = useState([]);
+  const [place, setPlace] = useState(null); // Initialized to null
+  const [formData, setFormData] = useState({}); // Initialized to an empty object
   const [openDailog, setOpenDailog] = useState(false);
 
   const handleInputChange = (name, value) => {
@@ -34,13 +33,16 @@ function CreateTrip() {
   }, [formData]);
 
   const login = useGoogleLogin({
-    onSuccess: (codeResp) => console.log(codeResp),
+    onSuccess: (codeResp) => {
+      console.log(codeResp);
+      GetUserProfile(codeResp);  // Fetch user profile after login success
+      setOpenDailog(false); // Close dialog after successful login
+    },
     onError: (error) => console.log(error),
   });
 
   const OnGenerateTrip = async () => {
-
-    const user = localStorage.getItem('User'); // Fixed case
+    const user = localStorage.getItem('User');
     if (!user) {
       setOpenDailog(true);
       return;
@@ -50,35 +52,47 @@ function CreateTrip() {
       Toast.show("Please fill all details");
       return;
     }
-    
+
     const FINAL_PROMPT = AI_PROMT
-      .replace('{location}', formData?.location?.label)
-      .replace('{totalDays}', formData?.noOfDays)
-      .replace('{traveler}', formData?.traveler)
-      .replace('{budget}', formData?.budget);
+      .replace('{location}', formData?.location?.label || 'Unknown')
+      .replace('{totalDays}', formData?.noOfDays || 'Unknown')
+      .replace('{traveler}', formData?.traveler || 'Unknown')
+      .replace('{budget}', formData?.budget || 'Unknown');
 
     console.log(FINAL_PROMPT);
     const result = await chatSession.sendMessage(FINAL_PROMPT);
 
     console.log(result?.response?.text());
   };
-  const GetUserProfile=(tokenInfo)=>{
-        
-    axios.get('https://www.googleapis.com/oauth2/v1/userinfo?access_token=${tokenInfo?.acess_token}',{
+
+  const GetUserProfile = (tokenInfo) => {
+    if (!tokenInfo || !tokenInfo.access_token) {
+      console.error("Invalid token info");
+      return;
+    }
+
+    axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${tokenInfo.access_token}`, {
       headers: {
-        Authorization:'Bearer ${tokenInfo?.access_token}',
-        Accept: 'Application/json'
+        Authorization: `Bearer ${tokenInfo.access_token}`,
+        Accept: 'application/json'
       }
-    }).then((resp)=>{
-      console.log(resp);
     })
-  }
+      .then((resp) => {
+        console.log(resp.data);
+        localStorage.setItem('User', JSON.stringify(resp.data));  // Store user info in localStorage
+      })
+      .catch((error) => {
+        console.error("Error fetching user profile", error);
+      });
+  };
+
   return (
     <div className='sm:px-10 md:px-32 lg:px-56 xl:px-10 px-5 mt-10'>
       <h2 className='font-bold text-3xl'>Tell us your travel preferences 🏕️🌴</h2>
       <p className='mt-4 text-gray-500 text-xl'>
         Help us customize your trip by sharing a few details about your travel style. Whether you prefer adventure, relaxation, or cultural experiences, we’ve got something for you.
       </p>
+
       <div className='mt-20'>
         <h2 className='text-xl font-medium mb-3'>What is your destination of choice?</h2>
         <GooglePlacesAutocomplete
@@ -99,62 +113,66 @@ function CreateTrip() {
           onChange={(e) => handleInputChange('noOfDays', e.target.value)}
         />
       </div>
-      <div className='mt-20'>
-        <h2 className='font-bold text-3xl'>What is your budget?</h2>
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-5'>
-          {SelectBudgetOptions.map((item, index) => (
-            <div key={index}
-              onClick={() => handleInputChange('budget', item.title)}
-              className={`p-4 border rounded-lg hover:shadow-2xl transition-transform transform hover:scale-105 cursor-pointer ${formData?.budget === item.title ? 'shadow-lg border-black' : ''}`}>
-              <h2 className='text-4xl'>{item.icon}</h2>
-              <h2 className='font-bold text-lg'>{item.title}</h2>
-              <h2 className='text-sm text-blue-500'>{item.desc}</h2>
-            </div>
-          ))}
+
+      <div>
+        <div className='mt-20'>
+          <h2 className='font-bold text-3xl'>What is your budget?</h2>
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-5'>
+            {SelectBudgetOptions.map((item, index) => (
+              <div key={index}
+                onClick={() => handleInputChange('budget', item.title)}
+                className={`p-4 border rounded-lg hover:shadow-2xl transition-transform transform hover:scale-105 cursor-pointer ${formData?.budget === item.title ? 'shadow-lg border-black' : ''}`}>
+                <h2 className='text-4xl'>{item.icon}</h2>
+                <h2 className='font-bold text-lg'>{item.title}</h2>
+                <h2 className='text-sm text-blue-500'>{item.desc}</h2>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className='mt-20'>
-        <h2 className='font-bold text-3xl'>Who are you planning to travel with?</h2>
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-5'>
-          {SelectTravelesList.map((item, index) => (
-            <div key={index}
-              onClick={() => handleInputChange('traveler', item.people)}
-              className={`p-4 border rounded-lg hover:shadow-2xl transition-transform transform hover:scale-105 cursor-pointer ${formData?.traveler === item.people ? 'shadow-lg border-black' : ''}`}>
-              <h2 className='text-4xl'>{item.icon}</h2>
-              <h2 className='font-bold text-lg'>{item.title}</h2>
-              <h2 className='text-sm text-blue-500'>{item.desc}</h2>
-            </div>
-          ))}
+        <div className='mt-20'>
+          <h2 className='font-bold text-3xl'>Who are you planning to travel with?</h2>
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-5'>
+            {SelectTravelesList.map((item, index) => (
+              <div key={index}
+                onClick={() => handleInputChange('traveler', item.people)}
+                className={`p-4 border rounded-lg hover:shadow-2xl transition-transform transform hover:scale-105 cursor-pointer ${formData?.traveler === item.people ? 'shadow-lg border-black' : ''}`}>
+                <h2 className='text-4xl'>{item.icon}</h2>
+                <h2 className='font-bold text-lg'>{item.title}</h2>
+                <h2 className='text-sm text-blue-500'>{item.desc}</h2>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className='my-10 justify-end flex'>
-        <Button className='bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out' onClick={OnGenerateTrip}>
-          Generate Trip
-        </Button>
-      </div>
-
-      <Dialog open={openDailog} onOpenChange={setOpenDailog}>
-        <DialogTrigger asChild>
-          <Button className='bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out'>
-            Sign in
+        <div className='my-10 justify-end flex'>
+          <Button className='bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out' onClick={OnGenerateTrip}>
+            Generate Trip
           </Button>
-        </DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogDescription>
-              <img src="/logo.svg" alt="Logo" />
-              <h2 className="font-bold text-lg mt-7 text-lime-400">Sign in with Google</h2>
-              <p>Sign in to the app with Google Authentication securely</p>
-              <Button onClick={login} className="w-full mt-5 flex gap-4 items-center">
-                <FcGoogle className="h-7 w-7" />
-                Sign in with Google
-              </Button>
-            </DialogDescription>
-          </DialogHeader>
-        </DialogContent>
-      </Dialog>
+        </div>
+
+        <Dialog open={openDailog} onOpenChange={setOpenDailog}>
+          <DialogTrigger asChild>
+            <Button className='bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out'>
+              Sign in
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogDescription>
+                <img src="/logo.svg" alt="Logo" />
+                <h2 className="font-bold text-lg mt-7 text-lime-400">Sign in with Google</h2>
+                <p>Sign in to the app with Google Authentication securely</p>
+                <Button onClick={login} className="w-full mt-5 flex gap-4 items-center">
+                  <FcGoogle className="h-7 w-7" />
+                  Sign in with Google
+                </Button>
+              </DialogDescription>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
+
+      </div>
     </div>
   );
 }
