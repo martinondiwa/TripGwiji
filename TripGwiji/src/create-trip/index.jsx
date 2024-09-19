@@ -56,7 +56,7 @@ function CreateTrip() {
       Toast.show("Please fill all details");
       return;
     }
-
+      setLoading(true);
     const FINAL_PROMPT = AI_PROMT
       .replace('{location}', formData?.location?.label || 'Unknown')
       .replace('{totalDays}', formData?.noOfDays || 'Unknown')
