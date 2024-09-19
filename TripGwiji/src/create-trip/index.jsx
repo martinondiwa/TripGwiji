@@ -189,11 +189,12 @@ function CreateTrip() {
                 <h2 className="font-bold text-lg mt-7 text-lime-400">Sign in with Google</h2>
                 <p>Sign in to the app with Google Authentication securely</p>
                 <Button onClick={login} className="w-full mt-5 flex gap-4 items-center">
-                  
+                  <>
                     <FcGoogle className="h-7 w-7" />
                     Sign in with Google
-                  </Button>
-                
+                  </>
+                </Button>
+
               </DialogDescription>
             </DialogHeader>
           </DialogContent>
