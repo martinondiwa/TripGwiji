@@ -11,7 +11,7 @@ function CreateTrip() {
   const [place, setPlace] = useState();
 
   const [formData, setFormData] = useState([]);
-  const[openDialog,setOpenDailo]
+  const[openDailog,setOpenDailog]= useState();
   const handleInputChange = (name, value) => {
     setFormData({
       ...formData, // Corrected from 'formField' to 'formData'
@@ -29,6 +29,7 @@ function CreateTrip() {
    const User=localStorage.getItem('User');
     if(!user)
     {
+      setOpenDailog(true)
       return;
     }
 
