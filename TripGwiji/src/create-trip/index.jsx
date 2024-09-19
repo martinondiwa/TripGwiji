@@ -8,9 +8,10 @@ import { chatSession } from '@/service/AIModal';
 
 
 function CreateTrip() {
-  const [place, setPlace] = useState(null);
-  const [formData, setFormData] = useState({});
+  const [place, setPlace] = useState();
 
+  const [formData, setFormData] = useState([]);
+  const[openDialog,setOpenDailo]
   const handleInputChange = (name, value) => {
     setFormData({
       ...formData, // Corrected from 'formField' to 'formData'
@@ -25,7 +26,11 @@ function CreateTrip() {
 
   const OnGenerateTrip =async() => {
 
-    localStorage.getItem('User');
+   const User=localStorage.getItem('User');
+    if(!user)
+    {
+      return;
+    }
 
     if (formData?.noOfDays > 5 && !formData?.location || !formData?.budget || !formData?.people) {
       Toast.show("Please fill all details"); // Adjust this based on your Toast library's API
