@@ -23,6 +23,7 @@ function CreateTrip() {
   const [place, setPlace] = useState(null); // Initialized to null
   const [formData, setFormData] = useState({}); // Initialized to an empty object
   const [openDailog, setOpenDailog] = useState(false);
+  const [loading, setLoading]=useState(false);
 
   const handleInputChange = (name, value) => {
     setFormData({
