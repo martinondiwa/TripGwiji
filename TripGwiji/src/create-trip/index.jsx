@@ -80,6 +80,8 @@ function CreateTrip() {
       .then((resp) => {
         console.log(resp.data);
         localStorage.setItem('User', JSON.stringify(resp.data));  // Store user info in localStorage
+        setOpenDailog(false);
+        OnGenerateTrip();
       })
       .catch((error) => {
         console.error("Error fetching user profile", error);
