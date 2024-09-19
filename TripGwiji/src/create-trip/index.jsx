@@ -5,7 +5,6 @@ import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import { Button } from '@/components/ui/button';
 import { Toast } from '@/components/ui/toast';
 import { chatSession } from '@/service/AIModal';
-
 import {
   Dialog,
   DialogContent,
@@ -130,8 +129,8 @@ function CreateTrip() {
               <img src="/logo.svg"/>
               <h2 className="font-bold text-lg mt-7 text-lime-400">Sign in with google</h2>
               <p>Sign in to the app with google Authentication securely</p>
-              onClick={login}
-              <Button className="w-full mt-5 flex gap-4 items-center" ><FcGoogle className="h-7 w-7" />Sign in with Google</Button>
+              
+              <Button OnClick={login}  className="w-full mt-5 flex gap-4 items-center" ><FcGoogle className="h-7 w-7" />Sign in with Google</Button>
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
