@@ -11,7 +11,7 @@ function CreateTrip() {
   const [place, setPlace] = useState();
 
   const [formData, setFormData] = useState([]);
-  const[openDailog,setOpenDailog]= useState();
+  const[openDailog,setOpenDailog]= useState(false);
   const handleInputChange = (name, value) => {
     setFormData({
       ...formData, // Corrected from 'formField' to 'formData'
