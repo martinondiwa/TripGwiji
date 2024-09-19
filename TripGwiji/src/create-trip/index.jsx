@@ -15,6 +15,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { FcGoogle } from "react-icons/fc";
+import { useGoogleLogin } from '@react-oauth/google';
 
 function CreateTrip() {
   const [place, setPlace] = useState();
@@ -32,6 +33,10 @@ function CreateTrip() {
     console.log(formData);
   }, [formData]);
 
+   const login=useGoogleLogin ({
+    onSuccess:(codeResp)=>console.log(codeResp)=> void
+    onError:(error)=>console.log(error)
+   })
 
   const OnGenerateTrip = async () => {
 
