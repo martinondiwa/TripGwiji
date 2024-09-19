@@ -173,7 +173,7 @@ function CreateTrip() {
           <Button className='bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out' onClick={OnGenerateTrip}>
            {
           loading?
-           <AiOutlineLoading3Quarters className='h-7 w-7' /> : 'Generate Trip'
+           <AiOutlineLoading3Quarters className='h-7 w-7 animate-spin' /> : 'Generate Trip'
            }
             
           </Button>
