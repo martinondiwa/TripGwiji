@@ -73,19 +73,45 @@ function CreateTrip() {
   };
 
   const saveAiTrip = async (TripData) => {
-
     setLoading(true);
+    const user = JSON.parse(localStorage.getItem('User'));
+    const docId = Date.now().toString();
 
-    const user = JSON.parse(localStorage.getItem('user'));
-    const docId = Date.now().toString()
-    await SendToBack(doc(db, "AITrips", docId), {
-      useSelection: formData,
-      tripData: JSON.parse(TripData),
-      userEmail: user?.email,
-      id: docId
-    });
-    setLoading(false);
-  }
+    try {
+      // Make sure you use setDoc directly
+      await setDoc(doc(db, "AITrips", docId), {
+        userSelection: formData,
+        tripData: JSON.parse(TripData), // Make sure TripData is valid JSON
+        userEmail: user?.email,
+        id: docId
+      });
+      console.log('Trip data saved successfully.');
+    } catch (error) {
+      console.error("Error saving trip data: ", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  const fetchTripData = async () => {
+    try {
+      const result = await chatSession.sendMessage(FINAL_PROMPT);
+      let tripData;
+
+      // Assuming result is a response with text
+      tripData = await result.response.text();
+
+      console.log("__", tripData);
+      // Proceed with further processing
+    } catch (error) {
+      console.error('Error fetching trip data:', error);
+    }
+  };
+
+  // Call the async function where needed
+  fetchTripData();
+
+
+
 
   const GetUserProfile = (tokenInfo) => {
     if (!tokenInfo || !tokenInfo.access_token) {
