@@ -65,6 +65,11 @@ function CreateTrip() {
     console.log(result?.response?.text());
   };
 
+  const saveAiTrip=async(TripData)=>{
+    const user=JSON.parse(localStorage.getItem('user'));
+    
+  }
+
   const GetUserProfile = (tokenInfo) => {
     if (!tokenInfo || !tokenInfo.access_token) {
       console.error("Invalid token info");
