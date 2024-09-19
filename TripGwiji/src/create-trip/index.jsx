@@ -80,7 +80,7 @@ function CreateTrip() {
     const docId = Date.now().toString()
     await SendToBack(doc(db, "AITrips", docId), {
       useSelection: formData,
-      tripData: TripData,
+      tripData: JSON.parse(TripData),
       userEmail: user?.email,
       id: docId
     });
@@ -170,14 +170,14 @@ function CreateTrip() {
         </div>
 
         <div className='my-10 justify-end flex'>
-          <Button 
-          disabled ={loading}
-          className='bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out' onClick={OnGenerateTrip}>
-           {
-          loading?
-           <AiOutlineLoading3Quarters className='h-7 w-7 animate-spin' /> : 'Generate Trip'
-           }
-            
+          <Button
+            disabled={loading}
+            className='bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out' onClick={OnGenerateTrip}>
+            {
+              loading ?
+                <AiOutlineLoading3Quarters className='h-7 w-7 animate-spin' /> : 'Generate Trip'
+            }
+
           </Button>
         </div>
 
@@ -196,10 +196,10 @@ function CreateTrip() {
                 <h2 className="font-bold text-lg mt-7 text-lime-400">Sign in with Google</h2>
                 <p>Sign in to the app with Google Authentication securely</p>
                 <Button onClick={login} className="w-full mt-5 flex gap-4 items-center">
-                  
-                    <FcGoogle className="h-7 w-7" />
-                    Sign in with Google
-                  
+
+                  <FcGoogle className="h-7 w-7" />
+                  Sign in with Google
+
                 </Button>
 
               </DialogDescription>
