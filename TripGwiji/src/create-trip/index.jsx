@@ -71,7 +71,8 @@ function CreateTrip() {
     await SendToBack(doc(db, "AITrips",docId), {
       useSelection:formData,
       tripData:TripData,
-      userEmail:user?.email
+      userEmail:user?.email,
+      id:docId
     });
   }
 
