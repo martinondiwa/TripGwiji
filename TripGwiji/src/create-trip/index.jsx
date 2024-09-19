@@ -14,6 +14,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import { FcGoogle } from "react-icons/fc";
 
 function CreateTrip() {
   const [place, setPlace] = useState();
@@ -124,7 +125,7 @@ function CreateTrip() {
               <img src="/logo.svg"/>
               <h2 className="font-bold text-lg mt-7 text-lime-400">Sign in with google</h2>
               <p>Sign in to the app with google Authentication securely</p>
-              <Button className="w-full mt-5">Sign in with Google</Button>
+              <Button className="w-full mt-5" ><FcGoogle />Sign in with Google</Button>
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
