@@ -23,7 +23,7 @@ function CreateTrip() {
   const [place, setPlace] = useState(null); // Initialized to null
   const [formData, setFormData] = useState({}); // Initialized to an empty object
   const [openDailog, setOpenDailog] = useState(false);
-  const [loading, setLoading]=useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (name, value) => {
     setFormData({
@@ -56,7 +56,7 @@ function CreateTrip() {
       Toast.show("Please fill all details");
       return;
     }
-      setLoading(true);
+    setLoading(true);
     const FINAL_PROMPT = AI_PROMT
       .replace('{location}', formData?.location?.label || 'Unknown')
       .replace('{totalDays}', formData?.noOfDays || 'Unknown')
@@ -66,22 +66,22 @@ function CreateTrip() {
     console.log(FINAL_PROMPT);
     const result = await chatSession.sendMessage(FINAL_PROMPT);
 
-    console.log("__" result?.response?.text());
+    console.log("__", result?.response?.text());
     setLoading(false);
     saveAiTrip(result?.response?.text())
   };
 
-  const saveAiTrip=async(TripData)=>{
+  const saveAiTrip = async (TripData) => {
 
     setLoading(true);
 
-    const user=JSON.parse(localStorage.getItem('user'));
-    const docId=Date.now().toString()
-    await SendToBack(doc(db, "AITrips",docId), {
-      useSelection:formData,
-      tripData:TripData,
-      userEmail:user?.email,
-      id:docId
+    const user = JSON.parse(localStorage.getItem('user'));
+    const docId = Date.now().toString()
+    await SendToBack(doc(db, "AITrips", docId), {
+      useSelection: formData,
+      tripData: TripData,
+      userEmail: user?.email,
+      id: docId
     });
     setLoading(false);
   }
@@ -176,9 +176,9 @@ function CreateTrip() {
 
         <Dialog open={openDailog} onOpenChange={setOpenDailog}>
           <DialogTrigger asChild>
-            <Button 
-            disabled={loading}
-            className='bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out'>
+            <Button
+              disabled={loading}
+              className='bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out'>
               Sign in
             </Button>
           </DialogTrigger>
@@ -189,9 +189,11 @@ function CreateTrip() {
                 <h2 className="font-bold text-lg mt-7 text-lime-400">Sign in with Google</h2>
                 <p>Sign in to the app with Google Authentication securely</p>
                 <Button onClick={login} className="w-full mt-5 flex gap-4 items-center">
-                  <FcGoogle className="h-7 w-7" />
-                  Sign in with Google
-                </Button>
+                  
+                    <FcGoogle className="h-7 w-7" />
+                    Sign in with Google
+                  </Button>
+                
               </DialogDescription>
             </DialogHeader>
           </DialogContent>
