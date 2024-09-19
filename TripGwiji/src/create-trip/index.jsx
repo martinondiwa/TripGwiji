@@ -34,7 +34,7 @@ function CreateTrip() {
   }, [formData]);
 
    const login=useGoogleLogin ({
-    onSuccess:(codeResp)=>console.log(codeResp)=> void
+    onSuccess:(codeResp)=>console.log(codeResp),
     onError:(error)=>console.log(error)
    })
 
@@ -130,6 +130,7 @@ function CreateTrip() {
               <img src="/logo.svg"/>
               <h2 className="font-bold text-lg mt-7 text-lime-400">Sign in with google</h2>
               <p>Sign in to the app with google Authentication securely</p>
+              onClick={login}
               <Button className="w-full mt-5 flex gap-4 items-center" ><FcGoogle className="h-7 w-7" />Sign in with Google</Button>
             </DialogDescription>
           </DialogHeader>
