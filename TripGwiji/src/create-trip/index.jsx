@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dialog";
 import { FcGoogle } from "react-icons/fc";
 import { useGoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
 
 function CreateTrip() {
   const [place, setPlace] = useState();
@@ -38,6 +39,7 @@ function CreateTrip() {
   });
 
   const OnGenerateTrip = async () => {
+
     const user = localStorage.getItem('User'); // Fixed case
     if (!user) {
       setOpenDailog(true);
@@ -48,7 +50,7 @@ function CreateTrip() {
       Toast.show("Please fill all details");
       return;
     }
-
+    
     const FINAL_PROMPT = AI_PROMT
       .replace('{location}', formData?.location?.label)
       .replace('{totalDays}', formData?.noOfDays)
@@ -60,7 +62,14 @@ function CreateTrip() {
 
     console.log(result?.response?.text());
   };
-
+  const GetUserProfile=(tokenInfo)=>{
+        
+    axios.get('https://www.googleapis.com/oauth2/v1/userinfo?access_token=${tokenInfo?.acess_token}',{
+      headers: {
+        Authorization:'Bearer ${tokenInfo?.access_token}'
+      }
+    })
+  }
   return (
     <div className='sm:px-10 md:px-32 lg:px-56 xl:px-10 px-5 mt-10'>
       <h2 className='font-bold text-3xl'>Tell us your travel preferences 🏕️🌴</h2>
