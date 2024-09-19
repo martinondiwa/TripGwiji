@@ -69,6 +69,8 @@ function CreateTrip() {
         Authorization:'Bearer ${tokenInfo?.access_token}',
         Accept: 'Application/json'
       }
+    }).then((resp)=>{
+      console.log(resp);
     })
   }
   return (
