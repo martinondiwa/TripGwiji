@@ -6,6 +6,14 @@ import { Button } from '@/components/ui/button';
 import { Toast } from '@/components/ui/toast';
 import { chatSession } from '@/service/AIModal';
 
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 function CreateTrip() {
   const [place, setPlace] = useState();
