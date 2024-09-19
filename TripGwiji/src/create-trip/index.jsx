@@ -15,6 +15,9 @@ import {
 import { FcGoogle } from "react-icons/fc";
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
+import { setDoc } from 'firebase/firestore';
+import { doc } from 'firebase/firestore';
+import { db } from '@/service/firebaseConfig';
 
 function CreateTrip() {
   const [place, setPlace] = useState(null); // Initialized to null
