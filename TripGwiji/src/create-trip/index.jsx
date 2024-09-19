@@ -72,6 +72,9 @@ function CreateTrip() {
   };
 
   const saveAiTrip=async(TripData)=>{
+
+    setLoading(true);
+    
     const user=JSON.parse(localStorage.getItem('user'));
     const docId=Date.now().toString()
     await SendToBack(doc(db, "AITrips",docId), {
