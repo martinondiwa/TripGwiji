@@ -176,7 +176,9 @@ function CreateTrip() {
 
         <Dialog open={openDailog} onOpenChange={setOpenDailog}>
           <DialogTrigger asChild>
-            <Button className='bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out'>
+            <Button 
+            disabled={loading}
+            className='bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg transition duration-300 ease-in-out'>
               Sign in
             </Button>
           </DialogTrigger>
