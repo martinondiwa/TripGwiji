@@ -68,9 +68,11 @@ function CreateTrip() {
   const saveAiTrip=async(TripData)=>{
     const user=JSON.parse(localStorage.getItem('user'));
     const docId=Date.now().toString()
-    await SendToBack(doc(db,"AITrips",docId)),{
-      
-    }
+    await SendToBack(doc(db, "AITrips",docId), {
+      useSelection:formData,
+      tripData:TripData,
+      userEmail:user?.email
+    });
   }
 
   const GetUserProfile = (tokenInfo) => {
