@@ -137,6 +137,13 @@ function CreateTrip() {
         console.error("Error fetching user profile", error);
       });
   };
+ 
+  const tripData = {
+    userSelection: {
+      location: { label: 'Nairobi' },
+      // other trip data...
+    }
+  };
 
   return (
     <div className='sm:px-10 md:px-32 lg:px-56 xl:px-10 px-5 mt-10'>

@@ -4,7 +4,7 @@ function InfoSection({trip}) {
   return (
     <div>
       <img src='/placeholder.JPG' className='h-[300px] w-full object-cover rounded-xl'/>
-      <div>
+      <div className=''>
         <h2>{trip?.userSelection?.location}</h2>
       </div>
     </div>

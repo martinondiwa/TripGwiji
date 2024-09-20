@@ -22,7 +22,7 @@ function Viewtrip() {
     const docSnap=await getDoc(docRef);
 
     if (docSnap.exists()){
-    console.log("Dodcument:",docSnap.data());
+    console.log("Document:",docSnap.data());
     setTrip(docSnap.data());
     }
     else{
