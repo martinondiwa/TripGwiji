@@ -19,14 +19,14 @@ import { setDoc } from 'firebase/firestore';
 import { doc } from 'firebase/firestore';
 import { db } from '@/service/firebaseConfig';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { useNavigation } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 
 function CreateTrip() {
   const [place, setPlace] = useState(null); // Initialized to null
   const [formData, setFormData] = useState({}); // Initialized to an empty object
   const [openDailog, setOpenDailog] = useState(false);
   const [loading, setLoading] = useState(false);
-  const router=useNavigation();
+  const navigate=useNavigate();
   const handleInputChange = (name, value) => {
     setFormData({
       ...formData,
