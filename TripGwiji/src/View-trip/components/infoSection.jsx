@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 import React from 'react'
 import { IoIosSend } from "react-icons/io";
 
-function InfoSection({ trip }) {
+function InfoSection({trip}) {
     return (
         <div >
             <img src='/placeholder.JPG' className='h-[300px] w-full object-cover rounded-xl' />
@@ -16,7 +16,7 @@ function InfoSection({ trip }) {
                         <h2 className='p-1 px-3 bg-gray-200 rounded-full text-gray-500 text-xs md:text-md'>🥂No. Of Travelers:{trip.userSelection?.traveler}2 people</h2>
                     </div>
                 </div>
-              <Button><IoIosSend /></Button>
+                <Button><IoIosSend /></Button>
             </div>
         </div>
     )
