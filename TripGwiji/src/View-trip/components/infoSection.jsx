@@ -7,6 +7,9 @@ function InfoSection({trip}) {
       <div className=''>
         <h2 className='font-bold text-2xl'>{trip?.userSelection?.location}</h2>
       </div>
+      <div>
+       <h2>{trip.userSelection?.noOfDays}Days</h2>
+      </div>
     </div>
   )
 }
