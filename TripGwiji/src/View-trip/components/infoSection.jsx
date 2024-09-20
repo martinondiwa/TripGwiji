@@ -8,7 +8,7 @@ function InfoSection({trip}) {
         <h2 className='font-bold text-2xl'>{trip?.userSelection?.location}</h2>
       </div>
       <div>
-       <h2 className='p-1 px-3 bg-gray-200 rounded-full text-gray-400'>{trip.userSelection?.noOfDays}Days</h2>
+       <h2 className='p-1 px-3 bg-gray-200 rounded-full text-gray-500 text-sm'>{trip.userSelection?.noOfDays}Days</h2>
       </div>
     </div>
   )
