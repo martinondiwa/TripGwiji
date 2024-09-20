@@ -22,6 +22,7 @@ function Viewtrip() {
 
     if (docSnap.exists()){
     console.log("Dodcument:",docSnap.data());
+    setTrip(docSnap.data());
     }
     else{
       console.log("No Such Document");
