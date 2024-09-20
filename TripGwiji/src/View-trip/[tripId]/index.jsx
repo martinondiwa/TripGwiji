@@ -11,7 +11,10 @@ function Viewtrip() {
   useEffect(()=>{
     tripId&&GetTripData();
   },[tripId])
-
+    
+  /**
+   * Used to get trip information from firebase 
+   */
 
   const GetTripData=async()=>{
     const docRef=doc(db, 'AITrips',tripId);
