@@ -34,7 +34,7 @@ function Viewtrip() {
   return (
     <div>
      {/**Information Section */}
-
+      <infoSection trip={trip}/>
      {/** recomended Hotels*/}
 
       {/**Daily plan */}
