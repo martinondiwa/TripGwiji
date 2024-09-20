@@ -16,7 +16,7 @@ function InfoSection({ trip }) {
                         <h2 className='p-1 px-3 bg-gray-200 rounded-full text-gray-500'>🥂No. Of Travelers:{trip.userSelection?.traveler}2 people</h2>
                     </div>
                 </div>
-              <Button></Button>
+              <Button><IoIosSend /></Button>
             </div>
         </div>
     )
