@@ -10,7 +10,9 @@ import ErrorPage from './components/custom/ErrorPage'
 import Contact from './components/custom/Contact'
 import { Toaster } from './components/ui/toaster'
 import { GoogleOAuthProvider } from '@react-oauth/google'
-import Viewtrip from './View-trip/[tripId]'
+import Viewtrip from './view-trip/[tripId]'
+
+
 const router = createBrowserRouter([
   {
     path: '/App',
@@ -30,8 +32,8 @@ const router = createBrowserRouter([
     element: <Header />
   },
   {
-    path: '/View-trip/:tripId',
-    element: <Viewtrip />
+    path: '/view-trip/:tripId',
+    element: <Viewtrip/>
   }
 
 ]);
