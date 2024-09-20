@@ -5,7 +5,7 @@ function InfoSection({trip}) {
     <div>
       <img src='/placeholder.JPG' className='h-[300px] w-full object-cover rounded-xl'/>
       <div className=''>
-        <h2>{trip?.userSelection?.location}</h2>
+        <h2 className='font-bold text-2xl'>{trip?.userSelection?.location}</h2>
       </div>
     </div>
   )
