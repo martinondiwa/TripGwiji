@@ -9,6 +9,11 @@ function Viewtrip() {
   const GetTripData=async()=>{
     const docRef=doc(db, 'AITrips',tripId);
     const docSnap=await getDoc(docRef);
+
+    if (docSnap.exists()){
+    console.log("Dodcument:",docSnap.data());
+    }
+
   }
 
   return (
