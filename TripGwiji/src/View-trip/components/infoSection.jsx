@@ -1,6 +1,6 @@
 import React from 'react'
 
-function infoSection(trip) {
+function <I></I>nfoSection(trip) {
   return (
     <div>
       <img src='/TripGwiji/public/placeholder.JPG' className='h-[300px] w-full object-cover rounded'/>
@@ -8,4 +8,4 @@ function infoSection(trip) {
   )
 }
 
-export default infoSection
+export default InfoSection
