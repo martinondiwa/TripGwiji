@@ -91,6 +91,7 @@ function CreateTrip() {
       console.error("Error saving trip data: ", error);
     } finally {
       setLoading(false);
+      navigate('/view-trip/'+docId)
     }
   };
   const fetchTripData = async () => {
