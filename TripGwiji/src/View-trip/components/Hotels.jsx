@@ -13,7 +13,7 @@ function Hotels({ trip }) {
               className='rounded-lg'
             />
             <div>
-              <h2>{hotel.hotelName}</h2>
+              <h2 className='my-3'>{hotel.hotelName}</h2>
             </div>
           </div>
         ))}
