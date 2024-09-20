@@ -1,13 +1,13 @@
 import { toast } from '@/hooks/use-toast';
 import { db } from '@/service/firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 function Viewtrip() {
 
   const {tripId}=useParams();
-
+  const[trip,setTrip]=useState([]);
   useEffect(()=>{
     tripId&&GetTripData();
   },[tripId])
