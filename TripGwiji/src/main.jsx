@@ -13,6 +13,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google'
 import Viewtrip from './view-trip/[tripId]'
 
 
+
 const router = createBrowserRouter([
   {
     path: '/App',

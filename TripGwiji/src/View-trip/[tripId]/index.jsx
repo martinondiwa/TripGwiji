@@ -4,6 +4,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import InfoSection from '../components/infoSection';
+import Hotels from '../components/Hotels';
 
 function Viewtrip() {
 
@@ -37,7 +38,7 @@ function Viewtrip() {
      {/**Information Section */}
       <InfoSection trip={trip}/>
      {/** recomended Hotels*/}
-
+       <Hotels/>
       {/**Daily plan */}
       
        {/**Footer */}
