@@ -6,7 +6,7 @@ function InfoSection({ trip }) {
     return (
         <div >
             <img src='/placeholder.JPG' className='h-[300px] w-full object-cover rounded-xl' />
-            <div>
+            <div className='flex justify-between items-center'>
                 <div className='my-5 flex flex-col gap-2'>
                     <h2 className='font-bold text-2xl'>{trip?.userSelection?.location}</h2>
 
