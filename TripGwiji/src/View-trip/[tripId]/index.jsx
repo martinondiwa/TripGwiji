@@ -33,7 +33,13 @@ function Viewtrip() {
 
   return (
     <div>
-      Viewtrip: {tripId}
+     {/**Information Section */}
+
+     {/** recomended Hotels*/}
+
+      {/**Daily plan */}
+      
+       {/**Footer */}
     </div>
   )
 }
