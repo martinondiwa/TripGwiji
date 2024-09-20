@@ -9,8 +9,8 @@ function Viewtrip() {
   const {tripId}=useParams();
 
   useEffect(()=>{
-    GetTripData();
-  },[])
+    tripId&&GetTripData();
+  },[tripId])
 
 
   const GetTripData=async()=>{
