@@ -9,8 +9,8 @@ function InfoSection({ trip }) {
             </div>
             <div>
                 <h2 className='p-1 px-3 bg-gray-200 rounded-full text-gray-500'>{trip.userSelection?.noOfDays}Days</h2>
-                <h2 className='p-1 px-3 bg-gray-200 rounded-full text-gray-500'>{trip.userSelection?.noOfDays}Days</h2>
-                <h2 className='p-1 px-3 bg-gray-200 rounded-full text-gray-500'>{trip.userSelection?.noOfDays}Days</h2>
+                <h2 className='p-1 px-3 bg-gray-200 rounded-full text-gray-500'>{trip.userSelection?.budget} Budget</h2>
+                <h2 className='p-1 px-3 bg-gray-200 rounded-full text-gray-500'>No. Of Traveler:{trip.userSelection?.traveler}</h2>
             </div>
         </div>
     )
