@@ -5,10 +5,14 @@ function Hotels(trip) {
     <div>
       <h2 className='font-bold text-xl mt-5'>Hotel Recommendations</h2>
       <div>
-       {trip?.tripData?.htels?.map((item,index)=>(
-        <img src='/placeholder.JPG' className='rounded-lg' />
-        
-       ))}
+        {trip?.tripData?.hotels?.map((item, index) => (
+          <div key={index}>
+            <img
+              src="placeholder.JPG"
+              className="rounded-lg"
+            />
+          </div>
+        ))}
       </div>
     </div>
   )
