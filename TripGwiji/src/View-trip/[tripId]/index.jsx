@@ -1,3 +1,4 @@
+import { toast } from '@/hooks/use-toast';
 import { db } from '@/service/firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
 import React from 'react'
@@ -12,6 +13,10 @@ function Viewtrip() {
 
     if (docSnap.exists()){
     console.log("Dodcument:",docSnap.data());
+    }
+    else{
+      console.log("No Such Document");
+      toast('No trip Found')
     }
 
   }
