@@ -3,6 +3,7 @@ import { db } from '@/service/firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import InfoSection from '../components/infoSection';
 
 function Viewtrip() {
 
@@ -34,7 +35,7 @@ function Viewtrip() {
   return (
     <div className='p-10 md:px-20 lg:px-44 xl:px-56'>
      {/**Information Section */}
-      <infoSection trip={trip}/>
+      <InfoSection trip={trip}/>
      {/** recomended Hotels*/}
 
       {/**Daily plan */}
