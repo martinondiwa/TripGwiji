@@ -38,7 +38,7 @@ function Viewtrip() {
      {/**Information Section */}
       <InfoSection trip={trip}/>
      {/** recomended Hotels*/}
-       <Hotels/>
+       <Hotels Hotel={Hotels}/>
       {/**Daily plan */}
       
        {/**Footer */}

@@ -9,8 +9,8 @@ function Hotels({ trip }) {
         {trip?.tripData?.hotels?.map((hotel, index) => (
           <div key={index}>
             <img 
-              src='/placeholder.JPG' 
-              alt={`Hotel ${index}`} 
+              src={`/placeholder.JPG`} // Replace with the actual image URL
+              alt={`Hotel ${hotel.hotelName}`} 
               className='rounded-lg'
             />
             <div>
